@@ -1,0 +1,34 @@
+{
+  "v": 1,
+  "description": "AIOSON Brain Index — agent procedural memory (quality-scored patterns). Load this first, then load specific brain files only when relevant tags match.",
+  "loading_strategy": "tiered — this index is always loaded (~2KB); brain files loaded on-demand by tag match",
+  "brains": [
+    {
+      "id": "site-forge/visual-patterns",
+      "agents": ["site-forge"],
+      "tags": ["css", "animation", "cloning", "visual-effects", "hover", "scroll", "video", "font", "keyframes", "interaction"],
+      "desc": "CSS/animation/interaction patterns learned from real site cloning — quality-scored, anti-pattern aware",
+      "path": ".aioson/brains/site-forge/visual-patterns.brain.json",
+      "nodes": 14,
+      "updated": "2026-04-01"
+    },
+    {
+      "id": "dev/patterns",
+      "agents": ["dev", "deyvin", "pair"],
+      "tags": ["security", "shell", "injection", "git", "commit", "context", "bootstrap", "cache", "editing", "tooling", "process", "verification", "discipline", "node", "child-process"],
+      "desc": "Implementation patterns @dev defaults to — security, shell discipline, git mechanics, editing hygiene, validated-slice loop",
+      "path": ".aioson/brains/dev/patterns.brain.json",
+      "nodes": 5,
+      "updated": "2026-05-07"
+    },
+    {
+      "id": "sheldon/architecture-decisions",
+      "agents": ["sheldon", "architect"],
+      "tags": ["aioson", "template", "agents", "sync", "sdd", "classification", "process", "validator", "sandbox", "impartiality", "discovery", "architecture", "ordering", "cli", "integration", "telemetry"],
+      "desc": "Architecture and process decisions @sheldon defaults to — workspace/template parity, classification gates, validator sandbox, discovery-before-architecture, CLI-first integration",
+      "path": ".aioson/brains/sheldon/architecture-decisions.brain.json",
+      "nodes": 5,
+      "updated": "2026-05-07"
+    }
+  ]
+}

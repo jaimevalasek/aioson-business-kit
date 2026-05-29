@@ -1,0 +1,44 @@
+---
+name: disk-first-artifacts
+description: Todo artefato gerado por um agente deve ser gravado em disco antes do fim da sessão — nunca apenas exibido no chat
+priority: 10
+version: 1.0.0
+---
+
+# Disk-First: Artifacts Always on Disk
+
+Every artifact produced by an AIOSON agent MUST be written to disk before session end. Showing in chat does not count as delivery — the next agent starts without context and the work is lost.
+
+## Mandatory artifacts by agent
+
+| Agent | Mandatory artifact | Path |
+|---|---|---|
+| `@product` | PRD | `.aioson/context/prd.md` or `prd-{slug}.md` |
+| `@product` | features.md | `.aioson/context/features.md` |
+| `@analyst` | Discovery | `.aioson/context/discovery.md` |
+| `@analyst` | Requirements | `.aioson/context/requirements-{slug}.md` |
+| `@architect` | Architecture | `.aioson/context/architecture.md` |
+| `@ux-ui` | UI Spec | `.aioson/context/ui-spec-{slug}.md` |
+| `@sheldon` | Manifest | `.aioson/plans/{slug}/manifest.md` |
+| `@pm` | Implementation Plan | `.aioson/context/implementation-plan-{slug}.md` |
+| `@dev` | Feature spec | `.aioson/context/spec-{slug}.md` |
+| `@qa` | QA report | `.aioson/context/qa-report-{slug}.md` |
+| `@squad` | Squad manifest | `.aioson/squads/{slug}/squad.manifest.json` |
+| `@squad` | Agent prompts | `.aioson/squads/{slug}/agents/{agent}.md` |
+
+## Correct delivery pattern
+
+```
+✅ Write artifact to disk → inform user of path.
+❌ Show in chat → ask "Can I save?" → Do NOT do this.
+```
+
+Exceptions: drafts shown mid-session for validation (before final save), artifacts explicitly cancelled by user.
+
+`project-pulse.md` must be updated at session end regardless of other artifacts.
+
+## On violation detected
+
+1. Write the artifact before closing — never defer to next session.
+2. If content was shown in chat, use it to write the file now.
+3. Update `project-pulse.md`.
